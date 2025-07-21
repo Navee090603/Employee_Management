@@ -1,1 +1,58 @@
-HI
+Finalize modules and features
+# Finalized Modules and Features: Payroll or Salary Management System
+
+Here’s a clear breakdown of the **core modules and features** you should implement to deliver a complete, functional Payroll or Salary Management System in your 10-day build.
+
+## 1. Employee Management
+- Add, edit, delete employee records
+- Store personal details: name, email, department, designation, join date, base salary
+- View employee profiles and list
+
+## 2. Attendance Management
+- Record daily attendance by employee and date
+- Mark status: Present, Absent, or Leave
+- Edit or delete attendance records
+
+## 3. Payroll Calculation
+- Calculate net salary based on base salary, paid days, and deductions
+- View detailed breakdown: total working days, present days, deductions, net pay
+- Select month/year for payroll run
+
+## 4. Payslip Generation
+- Auto-generate payslip for each employee/month
+- Download or print payslips (PDF/printable HTML page)
+- Payslip includes all relevant details (earnings, deductions, attendance summary)
+
+## 5. User Authentication and Roles
+- Secure login system (username, password)
+- Role-based access:
+  - **Admin:** Full access to all modules/features
+  - **Employee:** Can view own profile, attendance, and payslip only
+
+## 6. Dashboard / Reports
+- Summary dashboard with:
+  - Total employees
+  - Salary expense summary
+  - Attendance overview for chosen month
+  - Quick links to core actions
+- Basic reporting: Export payroll or attendance data (CSV/Excel)
+
+## 7. System Setup and Settings (Optional for MVP)
+- Update settings like: attendance rules, deduction rates
+- Manage admin/user accounts
+
+## Feature Matrix Table
+
+| Module                 | Key Features                                                                 |
+|------------------------|------------------------------------------------------------------------------|
+| Employee Management    | Add/edit/delete, view profile, list/search                                   |
+| Attendance Management  | Daily/Monthly marking, edit/history, summary                                 |
+| Payroll Calculation    | Auto-calculate salary, deductions, view breakdown, monthly/annual runs       |
+| Payslip Generation     | Generate/download/print payslips with all relevant financial data            |
+| Authentication & Roles | Secure admin/employee login, access control                                  |
+| Dashboard/Reports      | Summary stats, exportable data, payroll/attendance analytics                 |
+| System Settings        | Adjust rules, manage user/admin accounts (optional at MVP stage)             |
+
+These modules and features form the foundation for a robust payroll system and cover all basic HR/payroll workflows needed for a practical application. Additional modules (leave requests, compliance, bonuses, notifications) can be added as future enhancements once the core is complete.
+
+
