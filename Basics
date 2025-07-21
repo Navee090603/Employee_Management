@@ -1,0 +1,103 @@
+Create database schema/tables
+
+# Database Schema and Tables for Payroll or Salary Management System
+
+Below is a clean, normalized schema for your core modules—optimized for use with .NET, Entity Framework Core, and SQL Server.
+
+## 1. **Employees Table**
+
+Stores all employee core information.
+
+| Column Name   | Data Type     | Constraints             | Description                 |
+|---------------|--------------|-------------------------|-----------------------------|
+| EmployeeID    | INT          | PRIMARY KEY, IDENTITY   | Unique employee identifier  |
+| Name          | VARCHAR(100) | NOT NULL                | Full name                   |
+| Email         | VARCHAR(100) | UNIQUE, NOT NULL        | Employee email address      |
+| Department    | VARCHAR(50)  |                         | Department name             |
+| Designation   | VARCHAR(50)  |                         | Job title                   |
+| BaseSalary    | DECIMAL(12,2)| NOT NULL                | Monthly base salary         |
+| JoinDate      | DATE         | NOT NULL                | Date of joining             |
+| IsActive      | BIT          | DEFAULT 1               | Indicates if active         |
+
+## 2. **Attendance Table**
+
+Tracks daily attendance for each employee.
+
+| Column Name    | Data Type     | Constraints           | Description                  |
+|----------------|--------------|-----------------------|------------------------------|
+| AttendanceID   | INT          | PRIMARY KEY, IDENTITY | Unique attendance record     |
+| EmployeeID     | INT          | FOREIGN KEY           | Links to Employees           |
+| Date           | DATE         | NOT NULL              | Attendance date              |
+| Status         | VARCHAR(10)  | NOT NULL              | Present/Absent/Leave         |
+
+## 3. **Payroll Table**
+
+Stores payroll calculations and summary per employee per pay period.
+
+| Column Name    | Data Type     | Constraints           | Description                       |
+|----------------|--------------|-----------------------|-----------------------------------|
+| PayrollID      | INT          | PRIMARY KEY, IDENTITY | Unique payroll entry              |
+| EmployeeID     | INT          | FOREIGN KEY           | Links to Employees                |
+| Month          | VARCHAR(7)   | NOT NULL              | Payroll month (e.g., '2025-07')   |
+| PaidDays       | INT          | NOT NULL              | Number of days paid this month    |
+| Deductions     | DECIMAL(12,2)| DEFAULT 0             | Total deductions                  |
+| NetSalary      | DECIMAL(12,2)| NOT NULL              | Net salary after deductions       |
+
+## 4. **Users Table**
+
+Handles authentication and access control.
+
+| Column Name   | Data Type     | Constraints             | Description                          |
+|---------------|--------------|-------------------------|--------------------------------------|
+| UserID        | INT          | PRIMARY KEY, IDENTITY   | Unique user identifier               |
+| Username      | VARCHAR(50)  | UNIQUE, NOT NULL        | Login username                       |
+| PasswordHash  | VARCHAR(255) | NOT NULL                | Encrypted password                   |
+| Role          | VARCHAR(20)  | NOT NULL                | 'Admin' or 'Employee'                |
+| EmployeeID    | INT          | NULL, FOREIGN KEY       | Links to Employees (if Employee)     |
+
+## **Entity-Relationship Diagram (ERD) Overview**
+
+- **Employees**: 1-to-many with **Attendance** and **Payroll**
+- **Users**: Optionally linked to **Employees** (for role: Employee)
+
+## **SQL Table Creation Scripts (Sample)**
+
+```sql
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY IDENTITY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Department VARCHAR(50),
+    Designation VARCHAR(50),
+    BaseSalary DECIMAL(12,2) NOT NULL,
+    JoinDate DATE NOT NULL,
+    IsActive BIT DEFAULT 1
+);
+
+CREATE TABLE Attendance (
+    AttendanceID INT PRIMARY KEY IDENTITY,
+    EmployeeID INT FOREIGN KEY REFERENCES Employees(EmployeeID),
+    Date DATE NOT NULL,
+    Status VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE Payroll (
+    PayrollID INT PRIMARY KEY IDENTITY,
+    EmployeeID INT FOREIGN KEY REFERENCES Employees(EmployeeID),
+    Month VARCHAR(7) NOT NULL,
+    PaidDays INT NOT NULL,
+    Deductions DECIMAL(12,2) DEFAULT 0,
+    NetSalary DECIMAL(12,2) NOT NULL
+);
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role VARCHAR(20) NOT NULL,
+    EmployeeID INT NULL FOREIGN KEY REFERENCES Employees(EmployeeID)
+);
+```
+
+This database schema covers the essential requirements for your payroll project and provides a solid foundation for adding new features in the future.
+
