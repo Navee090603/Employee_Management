@@ -1,0 +1,83 @@
+in what name database should creted? and give the each table code
+
+# Database Name Recommendation
+
+For your **Payroll or Salary Management System** project, use a clear and descriptive database name. Examples:
+
+- `PayrollManagementDB`
+- `PayrollSystem`
+- `HRPayrollDB`
+
+The most common convention is `PayrollManagementDB`.
+
+# SQL Code for Creating Each Table
+
+Below is SQL code for each core table, optimized for SQL Server, with clarity and best practices.
+
+## 1. Employees Table
+
+```sql
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Department VARCHAR(50),
+    Designation VARCHAR(50),
+    BaseSalary DECIMAL(12,2) NOT NULL,
+    JoinDate DATE NOT NULL,
+    IsActive BIT DEFAULT 1
+);
+```
+
+## 2. Attendance Table
+
+```sql
+CREATE TABLE Attendance (
+    AttendanceID INT PRIMARY KEY IDENTITY(1,1),
+    EmployeeID INT NOT NULL,
+    Date DATE NOT NULL,
+    Status VARCHAR(10) NOT NULL CHECK (Status IN ('Present', 'Absent', 'Leave')),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+```
+
+## 3. Payroll Table
+
+```sql
+CREATE TABLE Payroll (
+    PayrollID INT PRIMARY KEY IDENTITY(1,1),
+    EmployeeID INT NOT NULL,
+    Month VARCHAR(7) NOT NULL, -- Format: 'YYYY-MM'
+    PaidDays INT NOT NULL,
+    Deductions DECIMAL(12,2) DEFAULT 0,
+    NetSalary DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+```
+
+## 4. Users Table
+
+```sql
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY IDENTITY(1,1),
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role VARCHAR(20) NOT NULL CHECK (Role IN ('Admin', 'Employee')),
+    EmployeeID INT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+```
+
+# Instructions
+
+1. **Choose your database name:**  
+   Example:  
+   ```sql
+   CREATE DATABASE PayrollManagementDB;
+   USE PayrollManagementDB;
+   ```
+
+2. **Execute the above table scripts** in your SQL Server query window after selecting your database.
+
+These table definitions will give you a well-structured starting point for your payroll management application.
+
