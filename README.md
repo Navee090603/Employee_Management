@@ -1,85 +1,89 @@
-# Employee_Management
+# 💼 Employee Management & Payroll System
 
-Payroll or Salary Management System
-Efficient, easy-to-use payroll management solution built with ASP.NET Core and SQL Server.
+An efficient and user-friendly web application designed to automate and simplify employee management, attendance tracking, and payroll generation. Built using **ASP.NET Core** and **SQL Server**, it's ideal for small to medium organizations looking to streamline HR operations.
 
-✨ Project Overview
-A web application for automating payroll processes, tracking employee attendance, managing user roles, and generating payslips. Designed to simplify HR tasks for small and medium organizations, ensuring accurate payroll calculation and quick reporting.
+---
 
-🚀 Features
-Employee Management
+## 🚀 Features
 
-Add, update, view, and delete employee profiles
+- 👨‍💼 **Employee Management**  
+  Add, update, view, and delete employee profiles with department, designation, salary, and joining info.
 
-Store department, designation, salary, joining date, and status
+- ⏱️ **Attendance Tracking**  
+  Record daily attendance (Present, Absent, Leave) and view per-employee history.
 
-Attendance Tracking
+- 💸 **Payroll Calculation**  
+  Auto-calculate monthly salaries based on base pay, paid days, and deductions.
 
-Record daily attendance (Present, Absent, Leave)
+- 📄 **Payslip Generation**  
+  View, print, or download detailed payslips for each employee.
 
-View and edit attendance history per employee
+- 🔐 **Role-Based Authentication**  
+  - **Admin**: Manage employees, payroll, attendance, and users  
+  - **Employee**: View own profile, attendance, and payslips
 
-Payroll Calculation
+- 📊 **Dashboard & Reports**  
+  View employee count, salary expenses, attendance summary  
+  Export payroll and attendance data to CSV/Excel
 
-Auto-calculate net salary based on base pay, paid days, and deductions
+---
 
-Generate monthly payroll with a single action
+## 🛠️ Tech Stack
 
-Payslip Generation
+| Layer        | Technology                          |
+|--------------|-------------------------------------|
+| **Backend**  | ASP.NET Core (MVC / Web API)        |
+| **Frontend** | Razor Pages / ASP.NET MVC           |
+| **ORM**      | Entity Framework Core               |
+| **Database** | SQL Server                          |
+| **Auth**     | ASP.NET Identity / Custom Roles     |
+| **UI Tools** | Optional Bootstrap for responsiveness |
 
-Download or print payslips with full salary and attendance summary
+---
 
-Role-Based Authentication
+## 🗂️ Database Schema
 
-Admins: Full management of data, payroll, users
+| Table Name   | Description                               |
+|--------------|-------------------------------------------|
+| `Employees`  | Staff profiles with salary and role info  |
+| `Attendance` | Daily attendance records (P/A/L)          |
+| `Payroll`    | Monthly salary calculations               |
+| `Users`      | Login credentials and role assignments    |
 
-Employees: View own profile, attendance, and payslips
+---
 
-Dashboard & Reports
+## 📦 Getting Started
 
-Overview of employee count, salary expenses, attendance summary
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/payroll-system.git
+   ```
 
-Basic data export (CSV/Excel) for payroll and attendance
+2. **Configure database connection**  
+   Update your SQL Server connection string in `appsettings.json`.
 
-🏗️ Tech Stack
-Backend: ASP.NET Core (Web API/MVC)
+3. **Apply migrations or use provided SQL schema**
 
-Frontend: ASP.NET MVC / Razor Pages
+4. **Build and run the project**
+   ```bash
+   dotnet run
+   ```
 
-ORM: Entity Framework Core
+5. **Login and get started**  
+   Use admin credentials to begin managing data.
 
-Database: SQL Server
+---
 
-Authentication: Identity or custom roles (Admin/Employee)
+## 🤝 Contributing
 
-Optional: Bootstrap for responsive UI
+- Fork the project and create feature branches  
+- Submit pull requests with meaningful commits  
+- Use GitHub Issues for bugs or feature requests
 
-🗂️ Database Schema (Core Tables)
-Table	Purpose
-Employees	Staff profiles with salary and role info
-Attendance	Daily records of presence/absence/leave
-Payroll	Calculated salaries for each month
-Users	Authentication data and roles
-📝 Getting Started
-Clone the repository
+---
 
-Configure your SQL Server connection string
+## 📄 License
 
-Run database migrations or execute the provided SQL schema
+This project is licensed under the **MIT License** — open-source, free to use and modify.
 
-Build and run the project (dotnet run)
-
-Access the web app and login as admin to start managing data
-
-📚 Contributing
-Fork the repo and create feature branches
-
-Submit PRs with clear descriptions
-
-Report bugs, request features via issues
-
-📄 License
-This project is open source and distributed under the MIT License.
-
-
-
+---
