@@ -1,0 +1,9 @@
+Day	Milestone / Task
+Day 1	Gather requirements, finalize project scope, prepare UI mockups
+Day 2	Design and implement SQL database schema
+Day 3–4	Develop backend APIs (.NET) for employee and attendance management
+Day 5–6	Implement salary computation module, create payslip functionality
+Day 7	Build web frontend (forms, tables, dashboards)
+Day 8	Integrate authentication and access control
+Day 9	Perform testing and resolve bugs
+Day 10	Deployment, documentation, user walkthroughs
